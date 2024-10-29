@@ -1,40 +1,23 @@
 <!-- layouts/_default/single.html -->
 {{ define "main" }}
-<article>
-    <h1>{{ .Title }}</h1>
-    <time>{{ .Date.Format "January 2, 2006" }}</time>
-    {{ .Content }}
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">{{ .Title }}</h1>
+        <div class="post-meta">
+            <time>{{ .Date.Format "January 2, 2006" }}</time>
+            {{ with .Params.categories }}
+            <div class="categories">
+                Categories:
+                {{ range . }}
+                <a href="/categories/{{ . | urlize }}">{{ . }}</a>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </header>
+
+    <div class="post-content">
+        {{ .Content }}
+    </div>
 </article>
-{{ end }}
-
-<!-- layouts/_default/list.html -->
-{{ define "main" }}
-<div class="post-list">
-    <h1>{{ .Title }}</h1>
-    {{ range .Pages }}
-    <article class="post-item">
-        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-        <time>{{ .Date.Format "January 2, 2006" }}</time>
-        {{ .Summary }}
-    </article>
-    {{ end }}
-</div>
-{{ end }}
-
-<!-- layouts/index.html -->
-{{ define "main" }}
-<div class="one-third column">
-    <h3>About</h3>
-    <!-- Your existing about section -->
-</div>
-
-<div class="one-third column">
-    <h3>Résumé</h3>
-    <!-- Your existing resume section -->
-</div>
-
-<div class="one-third column">
-    <h3>Contact</h3>
-    <!-- Your existing contact section -->
-</div>
 {{ end }}

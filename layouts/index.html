@@ -1,107 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ .Site.Title }}</title>
-    <meta name="description" content="Heyo, it's Ebin!">
-    <meta name="author" content="Ebin Tomy">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <link rel="stylesheet" href="{{ "assets/base.css" | relURL }}">
-    <link rel="stylesheet" href="{{ "assets/skeleton.css" | relURL }}">
-    <link rel="stylesheet" href="{{ "assets/fork.css" | relURL }}" />
-    <link rel='icon' href='{{ "favicon.ico" | relURL }}' type='image/x-icon'/>
-</head>
-<body>
-    <!-- Navigation Bar -->
-    <nav>
-        <ul class="navbar">
-            <li><a href="{{ "/" | relURL }}" class="home-link">Home</a></li>
-            <li><a href="{{ "/blog/" | relURL }}">Blog</a></li>
-        </ul>
-    </nav>
-
-    <div class="container">
-        <div class="sixteen columns">
-            <h1 style="margin-top: 40px" class="remove-bottom">Ebin Tomy</h1>
-            <h5>Heyo</h5>
-            <hr>
-        </div>
-
-        <!-- About Section -->
-        <div class="one-third column">
-            <h3>About</h3>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <td>Ebin Tomy</td>
-                </tr>
-                <tr>
-                    <th>Picture</th>
-                    <td>
-                        <img src="{{ "assets/profile.jpg" | relURL }}" width="120" height="120" alt="Profile">
-                    </td>
-                </tr>
-                <tr>
-                    <th>Location</th>
-                    <td>Toronto, Canada</td>
-                </tr>
-                <tr>
-                    <th>Skills</th>
-                    <td>
-                        <strong>Programming Languages: </strong> R, Julia & Python
-                        <br>
-                        <strong>Sports: </strong> Track & Field (800m), Rugby, Pickleball, Basketball, Surfing, Volleyball
-                        <br>
-                        <strong>Techniques: </strong> Statistical Analysis, Machine Learning, Financial Modelling
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- Resume Section -->
-        <div class="one-third column">
-            <h3>Résumé</h3>
-            <p>Work Experience:</p>
-            <ul class="square">
-                <li><strong><a href="https://radical.vc" target="_blank">Radical Ventures</a> (Present)</strong>: Analyst (Full-time)</li>
-                <li><strong><a href="https://innovation.ubc.ca/ubc-venture-funds" target="_blank">UBC Venture Funds</a> (Jan-May 2024)</strong>: Associate (Contract)</li>
-                <li><strong><a href="https://www.penderventures.com/" target="_blank">Pender Ventures</a> (May-Dec 2023)</strong>: Venture Capital Analyst (Co-op)</li>
-                <li><strong><a href="https://cpscapital.com/" target="_blank">CPS Capital</a> (May-Aug 2021)</strong>: Private Equity Analyst (Co-op)</li>
-            </ul>
-            <p>Education:</p>
-            <ul class="square">
-                <li><strong>The University of British Columbia</strong>: BA, studying Economics, Mathematics, and exploring Entrepreneurship</li>
-                <li><strong>Sciences Po Paris</strong>: BA, Economics and Sociology</li>
-            </ul>
-        </div>
-
-        <!-- Contact Section -->
-        <div class="one-third column">
-            <h3>Contact</h3>
-            <table>
-                <tr>
-                    <th>Email</th>
-                    <td>
-                        <span id="obf">ebintomy01@gmail.com</span>
-                    </td>
-                </tr>
-                <tr>
-                    <th>GitHub</th>
-                    <td><a href="https://github.com/EbinTomy" target="_blank">EbinTomy</a></td>
-                </tr>
-                <tr>
-                    <th>LinkedIn</th>
-                    <td><a href="https://www.linkedin.com/in/ebintomy/" target="_blank">ebintomy</a></td>
-                </tr>
-            </table>
-
-            <br>
-            <h3>Hobbies</h3>
-            <tr>
-                <p>Sports, Slack-lining, Hiking, Reading, Meditation</p>
-            </tr>
-        </div>
-    </div>
-</body>
-</html>
+<!-- layouts/index.html -->
+{{ define "main" }}
+<div class="post-list">
+    <h2>{{ now.Format "2006" }}</h2>
+    {{ $pages := where .Site.RegularPages "Type" "in" (slice "posts" "post") }}
+    {{ range $pages.GroupByDate "2006" }}
+        {{ if ne .Key (now.Format "2006") }}
+            <h2>{{ .Key }}</h2>
+        {{ end }}
+        {{ range .Pages }}
+            <div class="post-item">
+                <div class="post-title">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </div>
+                <div class="post-date">
+                    {{ .Date.Format "January 2" }}
+                </div>
+            </div>
+        {{ end }}
+    {{ end }}
+</div>
+{{ end }}

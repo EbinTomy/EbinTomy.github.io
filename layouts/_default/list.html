@@ -1,13 +1,11 @@
 <!-- layouts/_default/list.html -->
 {{ define "main" }}
-    <!-- Title for category/section pages -->
+<div class="post-list">
     {{ if .IsSection }}
         <h1 class="section-title">{{ .Title }}</h1>
     {{ end }}
 
-    <!-- Group posts by year -->
     {{ $pages := .Pages }}
-    {{ $pages := where $pages "Type" "in" (slice "posts" "post") }}
     {{ range $pages.GroupByDate "2006" }}
         <h2 class="year-heading">{{ .Key }}</h2>
         
@@ -22,9 +20,5 @@
             </div>
         {{ end }}
     {{ end }}
-
-    <!-- If no posts found -->
-    {{ if not $pages }}
-        <p>No posts found.</p>
-    {{ end }}
+</div>
 {{ end }}
