@@ -1,0 +1,181 @@
+
+body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    padding-top: 120px; /* Space for fixed header */
+}
+
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    z-index: 1000;
+    padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.fixed-header .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Site title */
+.site-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.site-title a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Role description */
+.role-description {
+    font-size: 16pt;
+    margin: 10px 0;
+}
+
+.role-description a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Navigation links */
+.nav-links {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10pt;
+    color: gray;
+}
+
+.nav-links a {
+    color: gray;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Blog post list */
+.post-list {
+    margin-top: 20px;
+}
+
+.post-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.post-title {
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+.post-title a {
+    text-decoration: none;
+    color: #333;
+}
+
+.post-date {
+    color: #666;
+    min-width: 100px;
+    text-align: right;
+}
+
+/* Year headings */
+.year-heading {
+    margin: 40px 0 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Preserve existing responsive grid while adding new responsive behaviors */
+@media (max-width: 767px) {
+    body {
+        padding-top: 100px;
+    }
+
+    .fixed-header {
+        padding: 10px;
+    }
+
+    .post-item {
+        flex-direction: column;
+    }
+
+    .post-date {
+        text-align: left;
+        margin-top: 5px;
+    }
+}
+/* Year heading */
+.year-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 40px 0 20px 0;
+    color: #333;
+}
+
+/* Section title (for categories) */
+.section-title {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Post item styling */
+.post-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.post-title {
+    flex: 1;
+}
+
+.post-title a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+
+.post-title a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.post-date {
+    color: #666;
+    font-size: 16px;
+    min-width: 100px;
+    text-align: right;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .post-item {
+        flex-direction: column;
+        padding: 15px 0;
+    }
+
+    .post-date {
+        text-align: left;
+        margin-top: 5px;
+        font-size: 14px;
+    }
+    
+    .post-title a {
+        font-size: 16px;
+    }
+}
