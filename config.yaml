@@ -1,90 +1,25 @@
-baseURL: "https://ebintomy.github.io/"  # Replace with your site URL
+baseURL: "https://ebintomy.github.io/"  # Your GitHub Pages URL
 languageCode: "en-us"
 title: "Ebin Tomy"
 
-# Menu Items
-menu:
-  main:
-    - identifier: home
-      name: Home
-      url: /
-      weight: 1
-    - identifier: blog
-      name: Blog
-      url: /blog/
-      weight: 2
-
-# Site Parameters
-params:
-  # Profile Information
-  profile:
-    title: "Analyst at Radical Ventures"
-    location: "Toronto, Canada"
-    skills:
-      programming: ["R", "Julia", "Python"]
-      sports: ["Track & Field", "Rugby", "Pickleball", "Basketball", "Surfing", "Volleyball"]
-      techniques: ["Statistical Analysis", "Machine Learning", "Financial Modelling"]
-
-  # Social Links
-  social:
-    github: "EbinTomy"
-    linkedin: "ebintomy"
-    email: "ebintomy01@gmail.com"
-
-  # Work Experience
-  experience:
-    - company: "Radical Ventures"
-      position: "Analyst"
-      status: "Present"
-      type: "Full-time"
-    - company: "UBC Venture Funds"
-      position: "Associate"
-      period: "Jan-May 2024"
-      type: "Contract"
-    - company: "Pender Ventures"
-      position: "Venture Capital Analyst"
-      period: "May-Dec 2023"
-      type: "Co-op"
-    - company: "CPS Capital"
-      position: "Private Equity Analyst"
-      period: "May-Aug 2021"
-      type: "Co-op"
-
-  # Education
-  education:
-    - institution: "The University of British Columbia"
-      degree: "BA"
-      details: "studying Economics, Mathematics, and exploring Entrepreneurship"
-    - institution: "Sciences Po Paris"
-      degree: "BA"
-      details: "Economics and Sociology"
-
-# Build Settings
-paginate: 10
-summaryLength: 30
-
-# Output Formats
-outputs:
-  home:
-    - HTML
-    - RSS
-    - JSON  # Required for search functionality
-
-# Privacy Settings
-privacy:
-  disqus:
-    disable: true
-  googleAnalytics:
-    anonymizeIP: true
-    disable: false
-    respectDoNotTrack: true
-
-# Enable raw HTML in Markdown
+# Enable raw HTML
 markup:
   goldmark:
     renderer:
       unsafe: true
 
+# Basic parameters
+params:
+  description: "Personal website of Ebin Tomy"
 
+# Create default archetypes
+taxonomies:
+  category: categories
+  tag: tags
 
-
+# Output formats
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
